@@ -88,6 +88,10 @@ open class MZDownloadManager: NSObject {
         return URLSessionConfiguration.background(withIdentifier: identifier)
     }
     
+    public func invalidateAndCancel() {
+        sessionManager.invalidateAndCancel()
+    }
+    
     fileprivate func backgroundSession(identifier: String, configuration: URLSessionConfiguration? = nil) -> URLSession {
         let sessionConfiguration = configuration ?? MZDownloadManager.defaultSessionConfiguration(identifier: identifier)
         assert(identifier == sessionConfiguration.identifier, "Configuration identifiers do not match")
